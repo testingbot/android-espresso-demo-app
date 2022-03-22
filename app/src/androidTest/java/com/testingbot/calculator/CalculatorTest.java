@@ -6,6 +6,7 @@ import androidx.test.filters.LargeTest;
 import androidx.test.filters.MediumTest;
 import androidx.test.filters.SmallTest;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,6 +27,11 @@ public class CalculatorTest {
     public ActivityScenarioRule<MainActivity> activityScenarioRule =
             new ActivityScenarioRule<MainActivity>(MainActivity.class);
 
+    @Before
+    public void clear()
+    {
+        onView(withId(R.id.butclear)).perform(click());
+    }
 
     @Test
     public void ensureButtonsWork() {
