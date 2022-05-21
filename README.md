@@ -1,6 +1,6 @@
 # android-espresso-demo-app
 
-![TestingBot logo](resources/testingbot-logo.png?raw=true "Logo")
+![TestingBot logo](https://testingbot.com/assets/logo.png)
 
 This is a sample Android app, created by TestingBot, to demonstrate how to use [Espresso Testing](https://developer.android.com/training/testing/espresso) on [TestingBot](https://testingbot.com).
 The app is a simple calculator, with buttons for each number and a couple of operation buttons (subtract, add, multiply, ...)
