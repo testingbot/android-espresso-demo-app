@@ -7,10 +7,6 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.filters.MediumTest;
 import androidx.test.filters.SmallTest;
-import androidx.test.rule.GrantPermissionRule;
-
-import com.squareup.spoon.Spoon;
-
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -31,10 +27,6 @@ public class CalculatorTest {
     @Rule
     public ActivityScenarioRule<MainActivity> activityScenarioRule =
             new ActivityScenarioRule<MainActivity>(MainActivity.class);
-
-    @Rule public GrantPermissionRule mRuntimePermissionRule = GrantPermissionRule.grant(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_EXTERNAL_STORAGE);
-
 
     @Before
     public void clear()

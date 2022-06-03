@@ -13,7 +13,8 @@ To get started, open the project in Android Studio and click *Run*
 If you'd like to run the test through commandline, you can use 
 
 ```
-xcodebuild -project xcuitest-sample.xcodeproj -scheme xcuitest-sample -destination 'platform=iOS Simulator,name=iPhone 13,OS=15.0' test
+./gradlew assembleAndroidTest
+./gradlew assembleDebug
 ```
 
 
