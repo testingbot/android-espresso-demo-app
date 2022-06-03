@@ -1,10 +1,15 @@
 package com.testingbot.calculator;
 
+import android.Manifest;
+
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.filters.MediumTest;
 import androidx.test.filters.SmallTest;
+import androidx.test.rule.GrantPermissionRule;
+
+import com.squareup.spoon.Spoon;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -27,14 +32,24 @@ public class CalculatorTest {
     public ActivityScenarioRule<MainActivity> activityScenarioRule =
             new ActivityScenarioRule<MainActivity>(MainActivity.class);
 
+    @Rule public GrantPermissionRule mRuntimePermissionRule = GrantPermissionRule.grant(Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.READ_EXTERNAL_STORAGE);
+
+
     @Before
     public void clear()
     {
         onView(withId(R.id.butclear)).perform(click());
     }
 
+
+    private void takeActivityScreenshot(String tag) {
+        NativeScreenshot.capture(tag);
+    }
+
     @Test
     public void ensureButtonsWork() {
+        takeActivityScreenshot("buttons_work");
         // Type text and then press the button.
         onView(withId(R.id.but1)).perform(click());
         onView(withId(R.id.but2)).perform(click());
@@ -45,6 +60,7 @@ public class CalculatorTest {
 
     @Test
     public void ensureAdditionWorks() {
+        takeActivityScreenshot("addition_works");
         // Type text and then press the button.
         onView(withId(R.id.but3)).perform(click());
         onView(withId(R.id.butplus)).perform(click());
@@ -58,6 +74,7 @@ public class CalculatorTest {
     @Test
     @SmallTest
     public void ensureMultiplicationWorks() {
+        takeActivityScreenshot("multiplication_works");
         // Type text and then press the button.
         onView(withId(R.id.but8)).perform(click());
         onView(withId(R.id.butmul)).perform(click());
@@ -71,6 +88,7 @@ public class CalculatorTest {
     @Test
     @MediumTest
     public void ensureClearWorks() {
+        takeActivityScreenshot("clear_works");
         // Type text and then press the button.
         onView(withId(R.id.but8)).perform(click());
         onView(withId(R.id.output)).check(matches(withText("8")));
@@ -81,6 +99,7 @@ public class CalculatorTest {
     @Test
     @LargeTest
     public void ensureDivideWorks() {
+        takeActivityScreenshot("divide_works");
         // Type text and then press the button.
         onView(withId(R.id.but1)).perform(click());
         onView(withId(R.id.but0)).perform(click());
