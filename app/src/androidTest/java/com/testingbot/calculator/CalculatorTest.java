@@ -1,15 +1,19 @@
 package com.testingbot.calculator;
 
 import android.Manifest;
+import android.util.Log;
 
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.filters.MediumTest;
 import androidx.test.filters.SmallTest;
+import androidx.test.rule.GrantPermissionRule;
+
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.RuleChain;
 import org.junit.runner.RunWith;
 
 import static androidx.test.espresso.Espresso.onView;
@@ -28,6 +32,11 @@ public class CalculatorTest {
     public ActivityScenarioRule<MainActivity> activityScenarioRule =
             new ActivityScenarioRule<MainActivity>(MainActivity.class);
 
+    @Rule
+    public RuleChain screenshotRule = RuleChain
+            .outerRule(GrantPermissionRule.grant(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE))
+            .around(activityScenarioRule);
+
     @Before
     public void clear()
     {
@@ -36,7 +45,11 @@ public class CalculatorTest {
 
 
     private void takeActivityScreenshot(String tag) {
-        NativeScreenshot.capture(tag);
+        try {
+            NativeScreenshot.capture(tag);
+        } catch (Exception e) {
+            Log.e(CalculatorTest.class.toString(), e.getMessage(), e);
+        }
     }
 
     @Test

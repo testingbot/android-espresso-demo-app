@@ -41,6 +41,6 @@ public class AdvancedCalculatorTest {
         onView(withId(R.id.but0)).perform(click());
         onView(withId(R.id.but0)).perform(click());
         onView(withId(R.id.buteq)).perform(click());
-        onView(withId(R.id.output)).check(matches(withText("500.0")));
+        onView(withId(R.id.output)).check(matches(withText("50e.0")));
     }
 }
